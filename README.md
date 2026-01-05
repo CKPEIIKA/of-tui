@@ -2,7 +2,7 @@
 
 `of_tui` is a small curses-based tool to browse and edit OpenFOAM case dictionaries.
 
-> Disclaimer: this project has been “vibe coded” and is under active, heavy development. Expect rough edges, rapid changes, and incomplete features; contributions and bug reports are very welcome.
+> Disclaimer: this project has been vibe coded and is under heavy development. Expect rough edges, rapid changes, and incomplete features. Better fork and do it better!
 
 ## Usage
 
@@ -35,7 +35,7 @@ Main menu entries:
 - `Editor` – browse `system`, `constant`, and `0*` dictionaries and edit entries.
 - `Check syntax` – run a simple `foamDictionary`-based check over all discovered dictionaries.
 - `Tools` – run common solvers/utilities, job helpers, and view logs.
-- `Diagnostics` – run `foamSystemCheck`, `foamInstallationTest`, `checkMesh`, `foamCheckMesh`.
+- `Diagnostics` – run `foamSystemCheck`, `foamInstallationTest`, `checkMesh`.
 - `Global search` – (shown only when `fzf` is available) search across all keys with `fzf` and jump to the chosen entry.
 
 ## Editor and entry browser
@@ -52,7 +52,6 @@ Keybindings in the entry browser:
 - `v`: view the full file
 - `o`: open the current entry in `$EDITOR` and write back on save
 - `/`: search entries with `fzf` (when available), otherwise simple in-file search
-- `n` / `N`: repeat last in-file search forward/backward
 
 Keybindings in the entry editor:
 

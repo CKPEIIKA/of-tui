@@ -320,31 +320,10 @@ def _entry_browser_screen(
                     else:
                         index = new_index
             continue
-        elif key_code == ord("n"):
-            # Repeat last search forward.
-            # We treat the last search term as stored in the cache sentinel.
-            query = getattr(_search_entries, "_last_query", None)  # type: ignore[attr-defined]
-            if query:
-                new_index = _search_entries(
-                    cache, file_path, case_path, keywords, index, query, direction=1
-                )
-                if new_index is not None:
-                    index = new_index
-            continue
-        elif key_code == ord("N"):
-            # Repeat last search backward.
-            query = getattr(_search_entries, "_last_query", None)  # type: ignore[attr-defined]
-            if query:
-                new_index = _search_entries(
-                    cache, file_path, case_path, keywords, index, query, direction=-1
-                )
-                if new_index is not None:
-                    index = new_index
-            continue
         elif key_code == ord("?"):
             _show_message(
                 stdscr,
-                "j/k or arrows: move, l/e/Right/Enter: edit, h/Left/q: back, v: view file, /: search, n/N: next/prev match, ?: help",
+                "j/k or arrows: move, l/e/Right/Enter: edit, h/Left/q: back, v: view file, /: search, ?: help",
             )
 
 
@@ -706,8 +685,6 @@ def _search_entries(
         return None
 
     q = query.lower()
-    # Store last query for 'n' / 'N' repeat search.
-    setattr(_search_entries, "_last_query", query)
 
     n = len(keywords)
     for step in range(1, n + 1):
